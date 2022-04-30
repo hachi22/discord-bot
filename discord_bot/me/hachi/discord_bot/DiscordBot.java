@@ -1,0 +1,33 @@
+package me.hachi.discord_bot;
+
+import java.util.Arrays;
+
+import javax.security.auth.login.LoginException;
+
+import ca.tristan.jdacommands.JDACommands;
+import me.hachi.discord_bot.commands.CommandHello;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.cache.CacheFlag;
+
+public class DiscordBot 
+{
+	public static GatewayIntent[] INTENTS = {GatewayIntent.GUILD_EMOJIS, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.GUILD_MESSAGE_REACTIONS, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_PRESENCES};
+    public static void main( String[] args ) throws LoginException
+    {
+    	
+    	JDACommands jdaCommands = new JDACommands("!");
+    	jdaCommands.registerCommand(new CommandHello());
+       
+			JDA jda = JDABuilder.create("OTY5OTc1NTg2NDMwNzg3NTg0.Ym1OKQ.rX0p9uGFOlc76IFr2fl1yQVDSQs", Arrays.asList(INTENTS))
+					.enableCache(CacheFlag.VOICE_STATE)
+					.setActivity(Activity.playing("With your mom"))
+					.setStatus(OnlineStatus.ONLINE)
+					.addEventListeners(new EventListeners())
+					.addEventListeners(jdaCommands)
+					.build();
+    }
+}
