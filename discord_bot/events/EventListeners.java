@@ -1,4 +1,4 @@
-package me.hachi.discord_bot;
+package events;
 import org.jetbrains.annotations.NotNull;
 
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
