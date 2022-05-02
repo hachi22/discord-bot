@@ -37,26 +37,26 @@ public class PlayerManager {
 		});
 	}
 	
-	public void loadAndPlay(TextChannel textChannel, String trackUrl) {
+	public void loadAndPlay(TextChannel textChannel, String trackURL) {
 		final GuildMusicManager musicManager = this.getMusicManager(textChannel.getGuild());
 		
-		this.audioPlayerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
+		this.audioPlayerManager.loadItemOrdered(musicManager, trackURL, new AudioLoadResultHandler() {
 
 			@Override
-			public void trackLoaded(AudioTrack track) {
-				musicManager.scheduler.queue(track);
+			public void trackLoaded(AudioTrack audioTrack) {
+				musicManager.scheduler.queue(audioTrack);
 				
 				textChannel.sendMessage("Adding to queue**`")
-				.append(track.getInfo().title)
-				.append(track.getInfo().author)
+				.append(audioTrack.getInfo().title)
+				.append(audioTrack.getInfo().author)
 				.append("`**")
 				.queue();
 				
 			}
 
 			@Override
-			public void playlistLoaded(AudioPlaylist playlist) {
-				final List<AudioTrack> tracks = playlist.getTracks();
+			public void playlistLoaded(AudioPlaylist audioPlayList) {
+				final List<AudioTrack> tracks = audioPlayList.getTracks();
 				if(!tracks.isEmpty()) {
 					musicManager.scheduler.queue(tracks.get(0));
 					textChannel.sendMessage("Adding to queue**`")
@@ -76,8 +76,6 @@ public class PlayerManager {
 			@Override
 			public void loadFailed(FriendlyException exception) {
 				
-				textChannel.sendMessage("Load Failed")
-				.queue();
 				
 			}
 			

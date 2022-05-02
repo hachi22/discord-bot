@@ -33,10 +33,10 @@ public class CommandPlay implements ICommand{
 			audioManager.openAudioConnection(memberChannel);
 		}
 		
-		String link = String.join(" ",event.getArgs());
+		String link = String.join(" ", event.getArgs());
 		
 		if(!isUrl(link)) {
-			link = "youtubeSearch:" + link + " audio";
+			link = "ytsearch:" + link + " song";
 		}
 		
 		PlayerManager.getINSTANCE().loadAndPlay(event.getTextChannel(), link);
