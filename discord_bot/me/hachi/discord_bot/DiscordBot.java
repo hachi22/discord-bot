@@ -25,7 +25,7 @@ public class DiscordBot
     	jdaCommands.registerCommand(new CommandHello());
     	jdaCommands.registerCommand(new CommandPlay());
        
-			JDA jda = JDABuilder.create("OTY5OTc1NTg2NDMwNzg3NTg0.Ym1OKQ.goDmnAmtRkWXp4ABIOR8Drx9wbA", Arrays.asList(INTENTS))
+			JDA jda = JDABuilder.create("The bot id goes here", Arrays.asList(INTENTS))
 					.enableCache(CacheFlag.VOICE_STATE)
 					.setActivity(Activity.playing("With your mom"))
 					.setStatus(OnlineStatus.ONLINE)
