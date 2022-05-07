@@ -9,9 +9,9 @@ public class EventListeners extends ListenerAdapter{
 
 	@Override
 	public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent event) {
-		if (!event.getGuild().getId().equals("881625439288840212")) {
+		if (!event.getGuild().getId().equals("Server discord id goes here")) {
 			return;
 		}
-		event.getGuild().getTextChannelById("881625439897026572").sendMessage("Helloooooo " + event.getMember().getAsMention() + "!").queue();
+		event.getGuild().getTextChannelById("Text channel id goes here").sendMessage("Helloooooo " + event.getMember().getAsMention() + "!").queue();
 	}
 }
